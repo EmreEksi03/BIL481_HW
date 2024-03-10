@@ -5,18 +5,18 @@ import java.util.ArrayList;
 public class App {
 
     public static int findCommonElementsCount(Integer[] arr1, ArrayList<Integer> arr2, int target) {
-        int count = 0;
-
-        // Check if both arrays are not null
         if (arr1 == null || arr2 == null) {
-            return count;
+            return 0; // Return 0 for null arrays
         }
 
-        // Iterate through arr1
-        for (int num : arr1) {
-            // Check if num exists in arr2 and is equal to target
-            if (arr2.contains(num) && num == target) {
+        int count = 0;
+        boolean[] visited = new boolean[arr1.length];
+
+        for (int i = 0; i < arr1.length; i++) {
+            int num = arr1[i];
+            if (!visited[i] && arr2.contains(num) && num == target) {
                 count++;
+                visited[i] = true; // Mark the element as visited in arr1
             }
         }
 
@@ -35,3 +35,4 @@ public class App {
         System.out.println("Number of common elements with value " + target + ": " + commonCount);
     }
 }
+
