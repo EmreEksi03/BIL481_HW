@@ -1,6 +1,6 @@
 package Main;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class App {
 
@@ -10,13 +10,17 @@ public class App {
         }
 
         int count = 0;
-        boolean[] visited = new boolean[arr1.length];
+        Map<Integer, Integer> elementCount = new HashMap<>(); // Track element counts in arr1
 
-        for (int i = 0; i < arr1.length; i++) {
-            int num = arr1[i];
-            if (!visited[i] && arr2.contains(num) && num == target) {
+        // Build a map to store the count of each element in arr1
+        for (int num : arr1) {
+            elementCount.put(num, elementCount.getOrDefault(num, 0) + 1);
+        }
+
+        for (int num : arr1) {
+            if (elementCount.get(num) > 0 && arr2.contains(num) && num == target) {
                 count++;
-                visited[i] = true; // Mark the element as visited in arr1
+                elementCount.put(num, elementCount.get(num) - 1); // Decrement element count in arr1
             }
         }
 

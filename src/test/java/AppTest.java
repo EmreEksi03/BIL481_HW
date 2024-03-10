@@ -61,7 +61,7 @@ public class AppTest {
         Integer[] arr1 = {1, 2, 2, 3};
         ArrayList<Integer> arr2 = new ArrayList<>(Arrays.asList(2, 4, 2));
         int target = 2;
-        int expectedCount = 3;
+        int expectedCount = 2;
 
         int actualCount = App.findCommonElementsCount(arr1, arr2, target);
 
