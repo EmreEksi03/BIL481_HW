@@ -1,6 +1,5 @@
-package Main;
+package com.mycompany.app;
 
-import java.util.*;
 import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
@@ -72,8 +71,11 @@ public class App {
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
-            return Integer.parseInt(processBuilder.environment().get("PORT"));
+            String port = processBuilder.environment().get("PORT");
+            System.out.println("PORT bulıundu " + port);
+            return Integer.parseInt(port);
         }
+        System.out.println("PORT bulıunamadı " + 4567);
         return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 }

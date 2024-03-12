@@ -1,4 +1,5 @@
-import Main.App;
+package com.mycompany.app;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
