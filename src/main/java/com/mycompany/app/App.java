@@ -5,6 +5,7 @@ import static spark.Spark.port;
 import static spark.Spark.post;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ import spark.template.mustache.MustacheTemplateEngine;
 public class App {
 
     public static int findCommonElementsCount(Integer[] arr1, ArrayList<Integer> arr2, int target) {
-        System.out.println(arr1);
+        System.out.println(Arrays.toString(arr1));
         System.out.println(arr2);
         System.out.println(target);
         if (arr1 == null || arr2 == null) {
