@@ -1,70 +1,47 @@
 import Main.App;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AppTest {
 
     @Test
-    public void testEmptyArrays() {
-        Integer[] arr1 = null;
-        ArrayList<Integer> arr2 = null;
-        int target = 5;
-        int expectedCount = 0;
-
-        int actualCount = App.findCommonElementsCount(arr1, arr2, target);
-
-        assertEquals(expectedCount, actualCount, "Should return 0 for null arrays");
+    public void testSearch_TargetExists() {
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        assertTrue(App.search(arr, 2));
     }
 
     @Test
-    public void testEmptyTargetList() {
-        Integer[] arr1 = {1, 2, 3};
-        ArrayList<Integer> arr2 = new ArrayList<>();
-        int target = 2;
-        int expectedCount = 0;
-
-        int actualCount = App.findCommonElementsCount(arr1, arr2, target);
-
-        assertEquals(expectedCount, actualCount, "Should return 0 for empty target list");
+    public void testSearch_TargetDoesNotExist() {
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        assertFalse(App.search(arr, 4));
     }
 
     @Test
-    public void testNoCommonElements() {
-        Integer[] arr1 = {1, 3, 5};
-        ArrayList<Integer> arr2 = new ArrayList<>(Arrays.asList(2, 4, 6));
-        int target = 7;
-        int expectedCount = 0;
-
-        int actualCount = App.findCommonElementsCount(arr1, arr2, target);
-
-        assertEquals(expectedCount, actualCount, "Should return 0 for no common elements");
+    public void testSearch_NullArray() {
+        assertFalse(App.search(null, 2));
     }
 
     @Test
-    public void testSingleCommonElement() {
-        Integer[] arr1 = {1, 2, 3};
-        ArrayList<Integer> arr2 = new ArrayList<>(Arrays.asList(2, 4, 6));
-        int target = 2;
-        int expectedCount = 1;
-
-        int actualCount = App.findCommonElementsCount(arr1, arr2, target);
-
-        assertEquals(expectedCount, actualCount, "Should return 1 for single common element");
+    public void testSearch_EmptyArray() {
+        ArrayList<Integer> arr = new ArrayList<>();
+        assertFalse(App.search(arr, 2));
     }
 
     @Test
-    public void testMultipleCommonElements() {
-        Integer[] arr1 = {1, 2, 2, 3};
-        ArrayList<Integer> arr2 = new ArrayList<>(Arrays.asList(2, 4, 2));
-        int target = 2;
-        int expectedCount = 2;
-
-        int actualCount = App.findCommonElementsCount(arr1, arr2, target);
-
-        assertEquals(expectedCount, actualCount, "Should return count for multiple common elements");
+    public void testSearch_TargetExistsMultipleTimes() {
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add(1);
+        arr.add(2);
+        arr.add(2);
+        arr.add(3);
+        assertTrue(App.search(arr, 2));
     }
 }
